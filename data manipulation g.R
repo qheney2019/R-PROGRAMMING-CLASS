@@ -27,8 +27,21 @@ starwars %>% select(name, height, mass, hair_color, gender)
 unique(hair_color)
 #to filter out some observation 
 df<-starwars %>%
-  select(name, height, mass, hair_color, gender) %>%
-  filter(hair_color %in% c("blond","brown", "grey","white","blonde"))
+  select(name, height, mass, hair_color, gender, birth_year, species) %>%
+  filter(hair_color %in% c("blond","brown", "grey","white","blonde")) %>% 
+  arrange(birth_year) %>% 
+  filter(species=="Human") %>% 
+  mutate(BMI=height/mass)
+ 
+df
+view(df)
+
+starwars %>% 
+  filter(height<100)
+
+
+
+
 df
 view(df)
 unique(hair_color)
